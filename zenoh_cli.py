@@ -102,7 +102,7 @@ def put(
 
 def _print_sample_to_stdout(sample: zenoh.Sample, fmt: str, decoder: str):
     key = sample.key_expr
-    payload = sample.value.payload
+    payload = sample.payload.to_bytes()
 
     try:
         value = DECODERS[decoder](key, payload)
